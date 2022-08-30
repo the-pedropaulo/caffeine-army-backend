@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Roles {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Users     Users[]
+}
+
+model Users {
+  id             String          @id @default(cuid())
+  email          String          @unique
+  password       String
+  roleName       String          
+  active         Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  Roles          Roles           @relation(fields: [roleName], references: [name])
+  ApiTokens      ApiTokens[]
+  Administrators Administrators?
+
+}
+
+model Administrators {
+  id        String   @unique @default(cuid())
+  userId    String   @unique
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Users     Users    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Enterprise {
+  id                   String   @unique @default(cuid())
+  cnpj                 String   @unique
+  shopkeeperName       String   @map("shopkeeper_name")
+  shopkeeperEmail      String   @map("shopkeeper_email")
+  shopkeeperPhone      String   @map("shopkeeper_phone")
+  shopkeeperPhoneOther String   @map("shopkeeper_phone_other")
+  socialReason         String   @map("social_reason")
+  fantasyName          String   @map("fantasy_name")
+  email                String
+  phone                String
+  description          String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model ApiTokens {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Users     Users    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
