@@ -1,4 +1,4 @@
-export interface getAllClients {
+export interface getEnterprise {
   cnpj: string;
   shopkeeperName: string;
   shopkeeperEmail: string;
@@ -10,7 +10,3 @@ export interface getAllClients {
   phone: string;         
 }
 
-export interface registerClient {
-  status: string;
-  message: string;
-}

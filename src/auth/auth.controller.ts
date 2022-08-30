@@ -1,6 +1,4 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { CreateClientDto } from 'src/clients/dto/create-client.dto';
-import { registerClient } from 'src/clients/interfaces/clients-response.interface';
 import { UserTokens } from 'src/shared/interfaces/user-tokens.interface';
 import { AuthService } from './auth.service';
 import { SignInDto } from './dto/signin-auth.dto';

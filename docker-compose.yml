@@ -3,7 +3,7 @@ version: '3.7'
 services:
   database:
     image: postgres:13
-    container_name: app_database
+    container_name: app
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
