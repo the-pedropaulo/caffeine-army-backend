@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Users } from '@prisma/client';
-import { EnterpriseService } from 'src/clients/enterprise.service';
+import { EnterpriseService } from 'src/enterprise/enterprise.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ValidationException } from 'src/shared/exceptions/validation.exception';
 import * as bcrypt from 'bcrypt';

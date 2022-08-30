@@ -5,7 +5,7 @@ import {
   RequestMethod,
 } from '@nestjs/common';
 import { PrismaModule } from './prisma/prisma.module';
-import { EnterpriseModule } from './clients/enterprise.module';
+import { EnterpriseModule } from './enterprise/enterprise.module';
 import { AuthModule } from './auth/auth.module';
 import { TokenModule } from './token/token.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
