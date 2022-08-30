@@ -1,4 +1,4 @@
-# sistema-gerenciamento-carros
+# caffeine-army
 
 *Requisitos:
 
@@ -19,8 +19,9 @@ PostgresSQL ou Docker
 2) Crie um .env com as configurações do .env.example
 3) Rode o comando "npm install"
 4) Rode o comando "npm run db:setup" -> Rodas as migrations
-4) Rode o comando "npm run build"
-5) Rode o comando "npm run start"
+5) OBS: Em caso de erro ao rodar o comando acima, tente "npx prisma db push" e em seguida, rode o comando acima novamente
+6) Rode o comando "npm run build"
+7) Rode o comando "npm run start"
 
 > Servidor rodando...
 
@@ -44,31 +45,8 @@ body: {
 
 > A partir do token recebido no response de /auth/signin, você poderá acessar as rotas:
 
-POST /cars -> Cadastrar um carro 
+GET /enterprise/:cnpj -> Listar a empresa específica
 
-PATCH /cars/:id_car -> Atualizar um carro 
-
-DELETE /cars/:id_car > Deletar um carro 
-
-GET /clients -> Listar todos os clientes
-
-POST /clients -> Cadastrar um cliente
-
-PATCH /clients/:id_user -> Atualizar um cliente
-
-DELETE /clients/:id_user -> Deletar um cliente
-
-> Rotas públicas:
-
-GET /cars -> Listar todos os carros
-
-> Filtros na rota GET /cars:
-
-name = passar nome do carro
-brand = passar marca do carro
-limit (default = 10)
-page (default = 1)
-
-<strong>Ex: baseURL/cars?name=Celta&limit=5</strong>
+<strong>Ex: baseURL/enterprise/866552664656123</strong>
 
 
